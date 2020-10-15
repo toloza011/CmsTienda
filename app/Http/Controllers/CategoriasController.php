@@ -12,9 +12,7 @@ class CategoriasController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
-    
-    public function index(){
-        
+    public function index(){   
         $categorias = Categoria::all();
         return view('categorias.index',compact('categorias'));
     }
@@ -45,12 +43,10 @@ class CategoriasController extends Controller
        }
       
     }
-
     public function subcategorias($id){
         $categorias = Categoria::findOrFail($id);
         return view('categorias.subcategorias',compact('categorias'));
     }
-    
     public function editarCategoria($id){
         $categoria = Categoria::findOrFail($id);
         return view('categorias.editarCategoria',compact('categoria'));
@@ -87,7 +83,6 @@ class CategoriasController extends Controller
         
         return redirect()->route('categorias.index');
     }
-
     public function editarSubcategoria($id){
         $subcategoria = subcategoria::FindOrFail($id);
         return view('categorias.editarSubcategoria',compact('subcategoria'));
@@ -98,5 +93,11 @@ class CategoriasController extends Controller
         $subcategoria->descripcion = $request->descripcion;
         $subcategoria->save();
         return redirect()->route('categorias.subcategorias',$subcategoria->categoria[0]->id);
+    }
+    public function eliminarSubcategoria($id){
+        $subcategoria = subcategoria::FindOrFail($id);
+        $padre= $subcategoria->categoria[0]->id;
+        $subcategoria->delete();
+        return redirect()->route('categorias.subcategorias',$padre);
     }
 }

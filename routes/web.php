@@ -29,4 +29,5 @@ Route::post('/categorias/actualizar/{id}','CategoriasController@actualizarCatego
 Route::get('/categorias/eliminar/{id}','CategoriasController@eliminarCategoria')->name('categoria.delete');
 Route::get('/subcategoria/editar/{id}','CategoriasController@editarSubcategoria')->name('subcategoria.editar');
 Route::post('/subcategoria/actualizar/{id}','CategoriasController@actualizarSubcategoria')->name('subcategoria.update');
+Route::get('/subcategoria/eliminar/{id}','CategoriasController@eliminarSubcategoria')->name('subcategoria.delete');
 

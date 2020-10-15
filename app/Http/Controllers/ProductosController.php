@@ -32,6 +32,14 @@ class ProductosController extends Controller
     }
     public function guardarProducto(Request $request){
        // dd($request->all());
+        $validaciones = $request->validate([
+          'nombre'=> ['required','max: 80'],
+          'descripcion'=>['required','max: 250'],
+          'imagen'=>['required','Image','mimes: jpeg,png,gif,svg','file'],
+          'precio' => ['required','min: 0','numeric','max: 9999999'],
+          'stock' => ['required','min: 0','numeric','max: 9999999'],
+          'tags' => ['required','min:1']
+        ]);
         $producto = new Producto();
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;

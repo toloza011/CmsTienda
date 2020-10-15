@@ -30,7 +30,7 @@
                             <td width="30%">{{$subcategoria->descripcion}}</td>
                                 <td width="10%">
                                     <div class="btn-group mt-3">
-                                        <a href="" id="delete-product" class="btn btn-danger" >Eliminar</a>
+                                    <a href="{{route('subcategoria.delete',$subcategoria->id)}}" id="delete-product" class="btn btn-danger" >Eliminar</a>
                                     <a href="{{route('subcategoria.editar',$subcategoria->id)}}" id="edit-product" class="btn btn-success">Editar</a>
                                     </div>
                                 </td>

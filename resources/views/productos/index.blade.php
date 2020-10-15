@@ -18,6 +18,7 @@
                     <th>Nombre</th>
                     <th>Descripcion</th>
                     <th>Stock</th>
+                    <th>Estado</th>
                     <th>Precio</th>
                     <th>Categorias</th>
                     <th>Acciones</th>
@@ -30,7 +31,7 @@
                         {{$producto->id}}
                     </td>
                     <td>
-                        <img src="img/productos/{{$producto->imagen}}" style="height:120px; width:200px" alt="">
+                        <img src="img/productos/{{$producto->imagen}}" style="height:100px; width:150px" alt="">
                     </td>
                     <td>
                         {{$producto->nombre}}
@@ -42,6 +43,15 @@
                     <td>
                         {{$producto->stock}}
                     </td>
+                    @if($producto->estado == 1)
+                    <td>
+                       <span class="badge badge-success">Activo</span>
+                    </td>
+                    @else 
+                    <td>
+                        <span class="badge badge-danger">Agotado</span>
+                     </td>
+                    @endif
                     <td>
                         $ {{$producto->precio}}
                     </td>
